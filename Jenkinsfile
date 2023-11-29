@@ -17,14 +17,14 @@ pipeline {
             }
         }
 
-        stage('Docker Compose Up') {
-            steps {
-                script {
-                    // Start Docker containers
-                    sh 'docker-compose up -d'
-                }
-            }
-        }
+        // stage('Docker Compose Up') {
+        //     steps {
+        //         script {
+        //             // Start Docker containers
+        //             sh 'docker-compose up -d'
+        //         }
+        //     }
+        // }
 
         stage('Restart Nginx') {
             steps {
