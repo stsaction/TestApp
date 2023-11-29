@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: "mysql:5.7"
+    volumes:
+      - ./home/ubuntu/uvdesk/db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: uvdesk
+      MYSQL_ROOT_PASSWORD: Sp@nD3v0ps2023
+      MYSQL_USER: uvdesk
+      MYSQL_PASSWORD: Sp@nD3v0ps001
+    ports:
+      - "6000:3306"  # Map container's port 3306 to host's port 6000
+
+  uvdesk:
+    image: nuttcorp/uvdesk:latest
+    depends_on:
+      - db
+    tty: true
+    environment:
+      MYSQL_USER: uvdesk
+      MYSQL_PASSWORD: Sp@nD3v0ps001
+      MYSQL_ROOT_PASSWORD: Sp@nD3v0ps2023
+      MYSQL_DATABASE: uvdesk
+    ports:
+      - "6001:80"  # Map container's port 80 to host's port 6001
+
+volumes:
+  db_data:
+
