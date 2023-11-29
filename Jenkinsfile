@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     // Restart Nginx (assuming it is one of the services defined in your docker-compose.yml)
-                    sh 'docker-compose restart nginx'
+                    sh 'sudo systemctl restart nginx'
                 }
             }
         }
