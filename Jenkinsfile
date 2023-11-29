@@ -17,14 +17,14 @@ pipeline {
             }
         }
 
-        // stage('Docker Compose Up') {
-        //     steps {
-        //         script {
-        //             // Start Docker containers
-        //             sh 'docker-compose up -d'
-        //         }
-        //     }
-        // }
+        stage('Docker Compose Up') {
+            steps {
+                script {
+                    // Start Docker containers
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
 
         stage('Restart Nginx') {
             steps {
@@ -37,12 +37,12 @@ pipeline {
     }
 
     post {
-        always {
-            // Clean up: Stop and remove Docker containers after the pipeline
-            script {
-                //sh 'docker-compose down'
-            }
-        }
+        // always {
+        //     // Clean up: Stop and remove Docker containers after the pipeline
+        //     script {
+        //         //sh 'docker-compose down'
+        //     }
+        // }
 
         success {
             echo 'Pipeline completed successfully!'
