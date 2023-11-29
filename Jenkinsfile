@@ -40,7 +40,7 @@ pipeline {
         always {
             // Clean up: Stop and remove Docker containers after the pipeline
             script {
-                sh 'docker-compose down'
+                //sh 'docker-compose down'
             }
         }
 
