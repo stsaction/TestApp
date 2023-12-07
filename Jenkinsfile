@@ -2,12 +2,7 @@ pipeline {
     agent any
     
     stages {
-        //stage('Checkout') {
-          //  #steps {
-             //   checkout scm
-          //  }
-     //   }
-
+       
         stage('Docker Compose Down') {
             steps {
                 script {
@@ -37,13 +32,7 @@ pipeline {
     }
 
     post {
-        // always {
-        //     // Clean up: Stop and remove Docker containers after the pipeline
-        //     script {
-        //         //sh 'docker-compose down'
-        //     }
-        // }
-
+        
         success {
             echo 'Pipeline completed successfully!'
         }
