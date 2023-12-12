@@ -10,9 +10,8 @@ pipeline {
        stage('Checkout') {
             agent { label "${params.AGENT}" }
             steps {
-                git url: "${params.GIT_REPO_URL}", 
-                
-                }
+                git url: "${params.GIT_REPO_URL}" 
+                 }
               }  
        
         stage('Docker Compose Down') {
