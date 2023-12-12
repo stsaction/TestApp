@@ -2,26 +2,20 @@ pipeline {
     agent none
     
     parameters {
-        choice(name: 'AGENT', choices: ['Test', 'Test2'], description: 'choose the node agent')
+        choice(name: 'AGENT',choices: ['Test','Test2'], description: 'choose the node agent')
         string(name: 'Trigger_Repo', description: 'Enter the Git URL')
     }
     
     stages {
-        stage('Preparation') {
-            agent any
-            steps {
-                cleanWs() // Clean up the workspace before starting the pipeline
-            }
-        }
-
-        stage('Checkout') {
+       stage('Checkout') {
             agent { label "${params.AGENT}" }
-           
-            }
-        }
-
+            steps {
+                git url: "${params.GIT_REPO_URL}", 
+                
+                }
+              }  
+       
         stage('Docker Compose Down') {
-            agent any
             steps {
                 script {
                     // Stop and remove Docker containers
@@ -31,7 +25,6 @@ pipeline {
         }
 
         stage('Docker Compose Up') {
-            agent any
             steps {
                 script {
                     // Start Docker containers
@@ -41,7 +34,6 @@ pipeline {
         }
 
         stage('Restart Nginx') {
-            agent any
             steps {
                 script {
                     // Restart Nginx (assuming it is one of the services defined in your docker-compose.yml)
@@ -52,6 +44,7 @@ pipeline {
     }
 
     post {
+        
         success {
             echo 'Pipeline completed successfully!'
         }
@@ -60,3 +53,4 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
+}
