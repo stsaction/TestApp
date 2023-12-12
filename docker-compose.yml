@@ -11,7 +11,7 @@ services:
       MYSQL_USER: uvdesk
       MYSQL_PASSWORD: Sp@nD3v0ps001
     ports:
-      - "6000:3306"  # Map container's port 3306 to host's port 6000
+      - "6005:3306"  # Map container's port 3306 to host's port 6000
 
   uvdesk:
     image: nuttcorp/uvdesk:latest
@@ -24,7 +24,7 @@ services:
       MYSQL_ROOT_PASSWORD: Sp@nD3v0ps2023
       MYSQL_DATABASE: uvdesk
     ports:
-      - "6001:80"  # Map container's port 80 to host's port 6001
+      - "6004:80"  # Map container's port 80 to host's port 6001
 
 volumes:
   db_data:
