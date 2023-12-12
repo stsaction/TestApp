@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout') {
             agent { label "${params.AGENT}" }
             steps {
-                script {
+                //script {
                     // Ensure the 'git' tool is configured
                     //def scmVars = checkout scm
                 }
