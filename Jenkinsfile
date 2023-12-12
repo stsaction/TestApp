@@ -8,6 +8,7 @@ pipeline {
     
     stages {
         stage('Preparation') {
+            agent any
             steps {
                 cleanWs() // Clean up the workspace before starting the pipeline
             }
@@ -16,11 +17,15 @@ pipeline {
         stage('Checkout') {
             agent { label "${params.AGENT}" }
             steps {
-                git url: "${params.Trigger_Repo}"
-            }  
+                script {
+                    // Ensure the 'git' tool is configured
+                    def scmVars = checkout scm
+                }
+            }
         }
 
         stage('Docker Compose Down') {
+            agent any
             steps {
                 script {
                     // Stop and remove Docker containers
@@ -30,6 +35,7 @@ pipeline {
         }
 
         stage('Docker Compose Up') {
+            agent any
             steps {
                 script {
                     // Start Docker containers
@@ -39,6 +45,7 @@ pipeline {
         }
 
         stage('Restart Nginx') {
+            agent any
             steps {
                 script {
                     // Restart Nginx (assuming it is one of the services defined in your docker-compose.yml)
