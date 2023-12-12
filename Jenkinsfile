@@ -16,11 +16,7 @@ pipeline {
 
         stage('Checkout') {
             agent { label "${params.AGENT}" }
-            steps {
-                //script {
-                    // Ensure the 'git' tool is configured
-                    //def scmVars = checkout scm
-                }
+           
             }
         }
 
@@ -64,3 +60,4 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
+}
