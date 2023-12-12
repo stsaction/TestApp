@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Ensure the 'git' tool is configured
-                    def scmVars = checkout scm
+                    //def scmVars = checkout scm
                 }
             }
         }
