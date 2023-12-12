@@ -1,18 +1,7 @@
 pipeline {
-    agent none
-    
-    parameters {
-        choice(name: 'AGENT',choices: ['Test','Test2'], description: 'choose the node agent')
-        string(name: 'Trigger_Repo', description: 'Enter the Git URL')
-    }
+    agent any
     
     stages {
-       stage('Checkout') {
-            agent { label "${params.AGENT}" }
-            steps {
-                git url: "${params.GIT_REPO_URL}" 
-                 }
-              }  
        
         stage('Docker Compose Down') {
             steps {
