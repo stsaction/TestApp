@@ -7,11 +7,16 @@ pipeline {
     }
     
     stages {
+        stage('Preparation') {
+            steps {
+                cleanWs() // Clean up the workspace before starting the pipeline
+            }
+        }
+
         stage('Checkout') {
             agent { label "${params.AGENT}" }
             steps {
-                git url: "${params.Trigger_Repo}" // Corrected parameter name
-                
+                git url: "${params.Trigger_Repo}"
             }  
         }
 
