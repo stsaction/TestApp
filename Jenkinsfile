@@ -12,8 +12,7 @@ pipeline {
             steps {
                 git url: "${params.GIT_REPO_URL}", 
                 
-                }
-              }  
+                }  
        
         stage('Docker Compose Down') {
             steps {
